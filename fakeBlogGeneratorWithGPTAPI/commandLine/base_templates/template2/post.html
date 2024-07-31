@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="keywords" content="{{ post.seo }}" />
+    <meta name="author" content="{{ site.site.name }}" />
+    <title>{{ site.site.name }} - Blog</title>
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+    <link href="/css/styles.css" rel="stylesheet" />
+    {% if site.details.random_text == '1' %}
+    <meta name="{{ site.details.random_1 }}" content="{{ site.details.random_2 }}" />
+    {% endif %}
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-red bg-blue">
+        <div class="container">
+            <a class="navbar-brand" style="color: white;" href="/">{{ site.site.name }}'s blog</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" style="color: white;" aria-current="page" href="/">Homepage</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <header class="py-5 bg-light border-bottom mb-4">
+        <div class="container">
+            <div class="text-center my-5">
+                <section class="banner" style="background-image: url(/images/bannerImage.png)">
+                    <div class="banner-content">
+                        <h1>Article</h1>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row justify-content-center" style="border-radius: 0%;">
+                    <div class="col-lg-8">
+                        <div class="card mb-4 mx-auto" style="border-radius: 15%">
+                            <a href="/posts/{{ post.uri }}{% if site.details.use_rewrite != " 1" %}.html{% endif %}">
+                                <img class="card-img-post"
+                                    src="data:image/jpeg;base64,{{ post.image.decode('utf-8') }}" alt="..." />
+                            </a>
+                            <div class="card-body">
+                                <div class="small text-muted">{{ post.posted }} -
+                                    By <a href="/authors/{{ post.author }}{% if site.details.use_rewrite != " 1"
+                                        %}.html{% endif %}">{{ site.authors[post.author].name }} </a></div>
+                                <h2 class="card-title h4">{{ post.title }}</h2>
+                                <br>
+                                <p class="card-text-post" style="white-space: pre-wrap;">{{ post.text }}</p>
+                                <a class="btn" style="background-color: #005B8D; color: white; border-radius: 50%" href="/">More
+                                    articles</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="py-5 bg-blue">
+            <div class="container-image bg-blue">
+                <p class="m-0 text-center text-white">Copyright &copy; 2023</p>
+                <p class="p-image">
+                    <a href="https://www.facebook.com/">
+                        <img class="icons_images" src="/images/facebook.svg" alt="Facebook Icon" style="background: white; border-radius: 30%;">
+                    </a>
+                </p>
+                <p class="p-image">
+                    <a href="https://twitter.com/">
+                        <img class="icons_images" src="/images/twitter.svg" alt="Twitter Icon" style="background: white; border-radius: 30%;">
+                    </a>
+                </p>
+                <p class="p-image">
+                    <a href="https://www.tiktok.com/">
+                        <img class="icons_images" src="/images/tiktok.svg" alt="TikTok Icon" style="background: white; border-radius: 30%;">
+                    </a>
+                </p>
+                <p class="p-image">
+                    <a href="https://www.youtube.com/">
+                        <img class="icons_images" src="/images/youtube.svg" alt="YouTube Icon" style="background: white; border-radius: 30%;">
+                    </a>
+                </p>
+            </div>
+        </footer>
+    {% if site.details.use_cdn == "1" %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    {% else %}
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    {% endif %}
+    <script src="/js/scripts.js"></script>
+</body>
+
+</html>

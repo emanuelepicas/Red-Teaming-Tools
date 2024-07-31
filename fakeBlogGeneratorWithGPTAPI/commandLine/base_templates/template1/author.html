@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="{{ site.site.name }}" />
+    <title>{{ site.site.name }} - Blog</title>
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+    <link href="/css/styles.css" rel="stylesheet" />
+    {% if site.details.random_text == '1' %}
+    <meta name="{{ site.details.random_1 }}" content="{{ site.details.random_2 }}" />
+    {% endif %}
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/">{{ site.site.name }}</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">Blog</a></li>
+                    <!-- <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li> -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <header class="py-5 bg-light border-bottom mb-4">
+        <div class="container">
+            <div class="text-center my-5">
+                <section class="banner" style="background-image: url(/images/bannerImage.png);">
+                    <div class="banner-content">
+                        <h1>{{author.name}}'s Profile</h1>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </header>
+    <div class="container-post">
+        <div class="col-lg-12">
+            <div class="row">{% for post in site.posts %}
+                {% if site.posts[post].author == author.id %}
+                <div class="col-lg-3 mb-4">
+                    <div class="card mb-4">
+                        <a href="/posts/{{ site.posts[post].uri }}{% if site.details.use_rewrite != " 1" %}.html{% endif
+                            %}">
+                            <img class="card-img-top"
+                                src="data:image/jpeg;base64,{{ site.posts[post].image.decode('utf-8') }}" alt="..." />
+                        </a>
+                        <div class="card-body">
+                            <div class="small text-muted">{{ site.posts[post].posted }}</div>
+                            <h2 class="card-title h4">{{ site.posts[post].title }}</h2>
+                            <p class="card-text">{{ site.posts[post].text[:100] }}...</p>
+                            <a class="btn" style="background-color: black; color: white;"
+                                href="/posts/{{ site.posts[post].uri }}{% if site.details.use_rewrite != " 1" %}.html{%
+                                endif %}">Read more</a>
+                        </div>
+                    </div>
+
+
+                </div>{% endif %} {% endfor %}
+            </div>
+            <div class="d-flex" style="background-color: rgb(33, 37, 41);">
+                <div class="col-profile bg-dark">
+                    <div class="card-profile" style="max-width: 500px; margin: 0 auto;">
+                        <div class="card-header-profile" style="color: white; "><strong> {{ author.name }} </strong> -
+                            {{
+                            author.profession }} at <strong>{{ site.site.name }}</strong></div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <img class="card-img-author"
+                                        style="width: 100%; height: auto; margin: 0%; border-radius: 2; border: 1px solid rgb(255, 255, 255);"
+                                        src="data:image/png;base64,{{ author.image.decode('utf-8') }}" alt="..." />
+                                </div>
+                                <div class="col-md-8">
+                                    <p class="card-text" style="white-space: pre-wrap; color:  white;">{{ author.bio }}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="news-section">
+                </div>
+
+            </div>
+            <footer class="py-5 bg-dark">
+                <div class="container-image bg-dark">
+                    <p class="m-0 text-center text-white">Copyright &copy; 2023</p>
+                    <p class="p-image">
+                        <a href="https://www.facebook.com/">
+                            <img class="icons_images" src="/images/facebook.svg" alt="Facebook Icon"
+                                style="background: white; border-radius: 30%;">
+                        </a>
+                    </p>
+                    <p class="p-image">
+                        <a href="https://twitter.com/">
+                            <img class="icons_images" src="/images/twitter.svg" alt="Twitter Icon"
+                                style="background: white; border-radius: 30%;">
+                        </a>
+                    </p>
+                    <p class="p-image">
+                        <a href="https://www.tiktok.com/">
+                            <img class="icons_images" src="/images/tiktok.svg" alt="TikTok Icon"
+                                style="background: white; border-radius: 30%;">
+                        </a>
+                    </p>
+                    <p class="p-image">
+                        <a href="https://www.youtube.com/">
+                            <img class="icons_images" src="/images/youtube.svg" alt="YouTube Icon"
+                                style="background: white; border-radius: 30%;">
+                        </a>
+                    </p>
+                </div>
+            </footer>
+            {% if site.details.use_cdn == "1" %}
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+            {% else %}
+            <script src="/js/bootstrap.bundle.min.js"></script>
+            {% endif %}
+            <script src="js/scripts.js"></script>
+</body>
+
+</html>
