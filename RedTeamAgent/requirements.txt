@@ -1,0 +1,9 @@
+markdownify
+smolagents
+requests
+duckduckgo_search
+pandas
+smolagents[gradio]
+smolagents[openai]
+mistralai
+colorama
